@@ -46,6 +46,7 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+console.log(process.env.DATABASE_URL);
 
 // Passing an ApolloServer instance to the `startStandaloneServer` function:
 //  1. creates an Express app
