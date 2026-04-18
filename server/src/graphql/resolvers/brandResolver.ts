@@ -5,13 +5,12 @@ export const brandResolvers = {
     books: () => "fdksl",
   },
   Mutation: {
-    createBrand: (_, {params}: {params: {name: string}}) => {
+    createBrand: (_: any, {params}: {params: {name: string}}) => {
       const newBrand = brandService.createBrand(params.name)
       return newBrand
     },
   },
 };
-
 
 
 
