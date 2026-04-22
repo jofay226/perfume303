@@ -1,17 +1,19 @@
 "use client";
+import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 
-// const GET_BRANDS = gql`
-//   query {
-//     getBrands {
-//       name
-//       website
-//     }
-//   }
-// `;
+const GET_BRANDS = gql`
+  query {
+    getBrands {
+      name
+      website
+    }
+  }
+`;
 
 export default function Home() {
-  // const {} = useQuery(GET_BRANDS);
+  const { data } = useQuery(GET_BRANDS);
+  console.log(data);
 
   return (
     <div className="min-h-screen bg-[#0f1115] text-gray-200">

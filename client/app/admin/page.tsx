@@ -2,6 +2,7 @@
 
 import { gql } from "@apollo/client";
 import { useMutation } from "@apollo/client/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const CREATE_BRAND = gql`
@@ -14,7 +15,12 @@ const CREATE_BRAND = gql`
 `;
 
 function AdminPage() {
-  const [createBrand] = useMutation(CREATE_BRAND);
+  const router = useRouter();
+  const [createBrand] = useMutation(CREATE_BRAND, {
+    onCompleted: () => {
+      router.push("/");
+    },
+  });
   const [brand, setBrand] = useState("");
 
   const createBrandHandler = () => {
