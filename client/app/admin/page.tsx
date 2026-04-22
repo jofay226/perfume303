@@ -14,8 +14,18 @@ const CREATE_BRAND = gql`
 `;
 
 function AdminPage() {
-  const [] = useMutation(CREATE_BRAND);
+  const [createBrand] = useMutation(CREATE_BRAND);
   const [brand, setBrand] = useState("");
+
+  const createBrandHandler = () => {
+    createBrand({
+      variables: {
+        params: {
+          name: brand,
+        },
+      },
+    });
+  };
 
   return (
     <main>
@@ -27,7 +37,12 @@ function AdminPage() {
           type="text"
           placeholder="brand name..."
         />
-        <button className="border-2 border-red-700 p-2">Create Brand</button>
+        <button
+          onClick={createBrandHandler}
+          className="border-2 border-red-700 p-2"
+        >
+          Create Brand
+        </button>
       </div>
     </main>
   );
