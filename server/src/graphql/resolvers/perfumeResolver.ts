@@ -9,11 +9,13 @@ export const PerfumeResolvers = {
   },
 
   Mutation: {
-    createPerfume: async () => {
-      const newPerfume =  await parfumeService.createPerfume();
-      console.log(newPerfume);
+    createPerfume: async (_, args) => {
+      console.log(args);
     
-      return "success"
+      // const newPerfume =  await parfumeService.createPerfume();
+      // console.log(newPerfume);
+    
+      return {id: "fakeID", name: "fakeName"}
     },
   }
 };
