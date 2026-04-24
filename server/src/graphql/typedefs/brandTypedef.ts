@@ -1,6 +1,4 @@
 
-
-
 export const BrandTypeDefs = `#graphql
   input Args {
     name: String!
@@ -12,7 +10,7 @@ export const BrandTypeDefs = `#graphql
   }
 
   extend type Query {
-    books: String
+    getBrands: [Brand]
   }
 
 

@@ -2,7 +2,10 @@ import { brandService } from "../../services/brandService.ts";
 
 export const brandResolvers = {
   Query: {
-    books: () => "fdksl",
+    getBrands: () => {
+      const brands = brandService.brands();
+      return brands
+    },
   },
   Mutation: {
     createBrand: (_: any, {params}: {params: {name: string}}) => {

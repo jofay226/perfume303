@@ -5,8 +5,8 @@ import { useQuery } from "@apollo/client/react";
 const GET_BRANDS = gql`
   query {
     getBrands {
+      id
       name
-      website
     }
   }
 `;
@@ -64,15 +64,15 @@ export default function Home() {
         <div className="lg:col-span-3">
           {/* TOP: BRANDS CIRCLES */}
           <div className="flex gap-4 overflow-x-auto mb-6 pb-2">
-            {["Dior", "Chanel", "Tom Ford", "YSL", "Armani"].map((brand) => (
+            {data?.getBrands.map((brand) => (
               <div
-                key={brand}
+                key={brand.id}
                 className="flex flex-col items-center gap-2 cursor-pointer"
               >
                 <div className="w-16 h-16 rounded-full bg-[#151922] border border-[#262b36] flex items-center justify-center text-sm">
-                  {brand[0]}
+                  {brand.name}
                 </div>
-                <span className="text-xs text-gray-400">{brand}</span>
+                <span className="text-xs text-gray-400">{brand.name}</span>
               </div>
             ))}
           </div>
