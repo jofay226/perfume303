@@ -1,11 +1,9 @@
-const typeDefs = `#graphql
-
-  type Book {
-    title: String
-    author: String
-  }
+export const PerfumeTypeDefs = `#graphql
 
   type Query {
-    books: [Book]
+    test: String
+  }
+  type Mutation {
+    createPerfume: String
   }
 `;
