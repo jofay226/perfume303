@@ -1,3 +1,4 @@
+
 import { parfumeService } from "../../services/perfumeService.ts";
 
 
@@ -9,13 +10,10 @@ export const PerfumeResolvers = {
   },
 
   Mutation: {
-    createPerfume: async (_, args) => {
-      console.log(args);
-    
-      // const newPerfume =  await parfumeService.createPerfume();
-      // console.log(newPerfume);
-    
-      return {id: "fakeID", name: "fakeName"}
+    createPerfume: async (_, {input}) => {
+      const newPerfume =  await parfumeService.createPerfume(input);
+      return newPerfume
     },
   }
 };
+

@@ -1,23 +1,20 @@
 import prisma from "../libs/prisma.ts"
 
 export const parfumeService = {
-    createPerfume: async () => {
+    createPerfume: async ({name, description, brandId, variants}) => {
         const newBrand =  prisma.perfume.create({
             data: {
-                name: "sport",
-                description: "dksbjb kjgfdjb bgsjbsg gsdjb sjk bs bksjb gkj",
-                brandId: "691821ac-ea3f-4cbd-854b-4a465ab13f72",
+                name,
+                description,
+                brandId,
                 variants: {
-                    create: [
-                        {price: 55, size: 50, concentration: "EDT"},
-                        {price: 105, size:100, concentration: "EDP"},
-                        {price: 159, size:150, concentration: "PERFUME"}
-                    ]
+                    create: variants
                 }
             }
         })
         return newBrand
     }
 }
+
 
 
