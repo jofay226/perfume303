@@ -2,7 +2,7 @@
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 
-const GET_BRANDS = gql`
+export const GET_BRANDS = gql`
   query {
     getBrands {
       id
