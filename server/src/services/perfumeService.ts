@@ -13,7 +13,29 @@ export const parfumeService = {
             }
         })
         return newBrand
+    },
+    getPerfumes: async (filters) => {
+        const perfumes = await prisma.perfume.findMany({
+            where: {
+                ...(filters.brandId && {brandId: filters.brandId}),
+                variants: {
+                    some: {
+                        ...(filters.size && {size: filters.size}),
+                        ...(filters.concentration && {concentration: filters.concentration}),
+                    }
+                }
+            },
+            include:{
+                variants: {
+                    ...(filters.size && {size: filters.size}),
+                    ...(filters.concentration && {concentration: filters.concentration}),
+                }
+            } 
+        }) 
+        return perfumes 
     }
+
+
 }
 
 
